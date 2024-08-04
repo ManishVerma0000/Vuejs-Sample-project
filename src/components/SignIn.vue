@@ -2,15 +2,15 @@
     <div class="bg-gray-50 font-[sans-serif]">
         <div class="min-h-screen flex flex-col items-center justify-center py-6 px-4">
             <div class="max-w-md w-full">
-               
+
 
                 <div class="p-8 rounded-2xl bg-white shadow">
                     <h2 class="text-gray-800 text-center text-2xl font-bold">Sign in</h2>
-                    <form class="mt-8 space-y-4">
+                    <form class="mt-8 space-y-4" @submit.prevent="handleSubmit">
                         <div>
                             <label class="text-gray-800 text-sm mb-2 block">User name</label>
                             <div class="relative flex items-center">
-                                <input name="username" type="text" required
+                                <input name="username" type="text" required v-model="username"
                                     class="w-full text-gray-800 text-sm border border-gray-300 px-4 py-3 rounded-md outline-blue-600"
                                     placeholder="Enter user name" />
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="#bbb" stroke="#bbb"
@@ -26,7 +26,7 @@
                         <div>
                             <label class="text-gray-800 text-sm mb-2 block">Password</label>
                             <div class="relative flex items-center">
-                                <input name="password" type="password" required
+                                <input v-model="password" name="password" type="password" required
                                     class="w-full text-gray-800 text-sm border border-gray-300 px-4 py-3 rounded-md outline-blue-600"
                                     placeholder="Enter password" />
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="#bbb" stroke="#bbb"
@@ -47,19 +47,19 @@
                                 </label>
                             </div>
                             <div class="text-sm">
-                                <a href="jajvascript:void(0);" class="text-blue-600 hover:underline font-semibold">
+                                <a href="jajvascript:void(0);" class="text-black hover:underline font-semibold">
                                     Forgot your password?
                                 </a>
                             </div>
                         </div>
 
                         <div class="!mt-8">
-                            <button type="button"
-                                class="w-full py-3 px-4 text-sm tracking-wide rounded-lg text-white bg-blue-600 hover:bg-blue-700 focus:outline-none">
+                            <button type="button" @click="submit()"
+                                class="w-full py-3 px-4 text-sm tracking-wide rounded-lg text-white bg-black hover:bg-blue-700 focus:outline-none">
                                 Sign in
                             </button>
                         </div>
-                     
+
                     </form>
                 </div>
             </div>
@@ -68,10 +68,41 @@
 </template>
 
 <script>
+import axiosInstance from '@/api/api';
 export default {
     name: "SignIn",
-    data() {
 
-    }
+    data() {
+        return {
+            username: '',
+            password: '',
+            rememberMe: false
+        }
+    },
+    methods: {
+        async submit() {
+            const data = {
+                email: this.username,
+                password: this.password
+            }
+            await axiosInstance.post('/login', data).then((res) => {
+                console.log(res)
+                this.$toast.open({
+                    message: 'login success !',
+                    type: 'success', // Type of toast: success, info, error, warning
+                });
+                if(res){
+                    this.$router.push('/dashboard')
+                }
+                
+            }).catch((err) => {
+                console.log(err)
+                this.$toast.open({
+                    message: 'username and password mismatch !',
+                    type: 'warning', // Type of toast: success, info, error, warning
+                });
+            })
+        }
+    },
 }
 </script>
