@@ -1,6 +1,6 @@
 <template>
 
-<div style="display: flex; justify-content: space-around;">
+    <div style="display: flex; justify-content: space-around;">
         <div class="relative flex flex-col mt-6 text-gray-700 bg-white shadow-md bg-clip-border rounded-xl w-96">
             <div class="p-6">
                 <h5
@@ -66,9 +66,9 @@
 
 
 <script>
-export default{
-    name:"AppProjectCard",
-    data(){
+export default {
+    name: "AppProjectCard",
+    data() {
 
     }
 }

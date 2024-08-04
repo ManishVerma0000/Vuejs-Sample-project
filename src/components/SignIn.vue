@@ -2,9 +2,7 @@
     <div class="bg-gray-50 font-[sans-serif]">
         <div class="min-h-screen flex flex-col items-center justify-center py-6 px-4">
             <div class="max-w-md w-full">
-                <a href="javascript:void(0)"><img src="https://readymadeui.com/readymadeui.svg" alt="logo"
-                        class='w-40 mb-8 mx-auto block' />
-                </a>
+               
 
                 <div class="p-8 rounded-2xl bg-white shadow">
                     <h2 class="text-gray-800 text-center text-2xl font-bold">Sign in</h2>
@@ -61,10 +59,7 @@
                                 Sign in
                             </button>
                         </div>
-                        <p class="text-gray-800 text-sm !mt-8 text-center">Don't have an account? <a
-                                href="javascript:void(0);"
-                                class="text-blue-600 hover:underline ml-1 whitespace-nowrap font-semibold">Register
-                                here</a></p>
+                     
                     </form>
                 </div>
             </div>
