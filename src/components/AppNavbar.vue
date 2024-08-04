@@ -70,7 +70,7 @@
   const navigation = [
     { name: 'Dashboard', href: 'Dashboard', current: true },
     { name: 'Team', href: '#', current: false },
-    { name: 'Projects', href: '#', current: false },
+    { name: 'Projects', href: '/jobs', current: false },
     { name: 'Login', href: '/signin', current: false },
   ]
   </script>
